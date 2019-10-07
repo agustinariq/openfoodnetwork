@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
     render json: {}, status: :ok
   end
 
+  def authenticate_user!
+    redirect_to login_path if spree_current_user.nil?
+  end
+
   protected
 
   def after_sign_in_path_for(resource_or_scope)

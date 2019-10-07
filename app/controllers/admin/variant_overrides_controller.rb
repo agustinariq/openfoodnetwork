@@ -6,6 +6,7 @@ module Admin
     include EnterprisesHelper
 
     prepend_before_filter :load_data
+    prepend_before_filter :authenticate_user!
     before_filter :load_collection, only: [:bulk_update]
     before_filter :load_spree_api_key, only: :index
 
